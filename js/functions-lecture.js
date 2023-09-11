@@ -65,3 +65,12 @@ const timeIWouldSave = (currentSpeed, plannedSpeed, distanceToTravel) => {
 const add = function(num1, num2){
     return num1 + num2;
 }
+
+// let result = add(5, 5);
+// console.log(result);
+
+// console.log(add(5, 5));
+
+// Don't forget to create some output
+// for your function calls
+add(5, 5);
