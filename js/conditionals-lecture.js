@@ -41,7 +41,7 @@
 
 // === CODE GOLF: TERNARY OPERATOR
 
-const userDecision = confirm("Please don't leave? Don't you want a free flashlight?");
+// const userDecision = confirm("Please don't leave? Don't you want a free flashlight?");
 
 const goodDecision = "Great! Give me your credit card information and shipping address and your mother's maiden name.";
 
@@ -57,4 +57,52 @@ const badDecision = "Too late. I have your IP address. Give me all your info or 
   // is userDecision true?
  // if so, alert goodDecision
  // otherwise, alert badDecision
-alert(userDecision?goodDecision:badDecision);
+// alert(userDecision?goodDecision:badDecision);
+
+
+// CONVERT THE ICE CREAM SERVER INTO A FUNCTION
+
+// let userChoice = prompt("Welcome to Codeup Ice Cream! What flavor do you want?");
+//
+// function serveIceCream(flavor){
+//     switch (flavor) {
+//     case("chocolate"):
+//         alert("One chocolate coming right up!");
+//         break;
+//     case("vanilla"):
+//         alert("One vanilla coming right up!");
+//         break;
+//     case("strawberry"):
+//         alert("One strawberry coming right up!");
+//         break;
+//     default:
+//         alert("We do not have that flavor. Sorry!");
+//         break;
+//     }
+// }
+//
+// serveIceCream(userChoice);
+
+function sayHello(name){
+    if (name.length < 60){
+        return `Hello, ${name}`;
+    } else {
+        return "That is way too long."
+    }
+}
+
+function evenOrOdd(number){
+    if (!isNumber(number)){
+        return "That is not a number."
+    } else if (number%2 === 0) {
+        return "even";
+    } else {
+        return "odd";
+    }
+}
+
+
+
+
+
+
