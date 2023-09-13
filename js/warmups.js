@@ -26,3 +26,5 @@ function trim(str, num){
         return `${str.substring(0, num-3)}...`;
     }
 }
+
+// big change
