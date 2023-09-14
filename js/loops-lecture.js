@@ -1,5 +1,9 @@
 "use strict";
 
+// let i = 5;
+// let iString = "" + i;
+// console.log(iString.repeat(5));
+
 // let i = 1; // initialization
 // while(i < 10) { // test
 //     console.log(i);
@@ -84,5 +88,6 @@ function myLoopingFunction(maxIterations) {
         console.log("loop iteration i = " + i);
     }
 }
+
 
 console.log("done");
