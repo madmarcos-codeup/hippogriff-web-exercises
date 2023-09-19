@@ -189,7 +189,8 @@ function createBook(title, firstName, lastName) {
     }
     return book;
 }
-books.push(createBook("Misery", "Stephen", "King"));
+const newBook = createBook("Misery", "Stephen", "King");
+books.push(newBook);
 printBooks(books);
 
 function showBookInfo(bookNumber, book) {
