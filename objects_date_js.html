@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Object Exercise</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<script>
+    'use strict';
+
+    // todo:
+    // Create an array of months for printing dates
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    const daysOfWeekAbbreviated = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    // todo:
+    // Create the date corresponding to your birthday using the JavaScript Date object.
+    const myBDayTimestamp = 20231200;
+    const myJSBDate = new Date(20231000 * 1000);
+    console.log(myJSBDate);
+    // const myJSBDateTheEasyWay = new Date("August 22 1970");
+    // console.log(myJSBDateTheEasyWay);
+    //let jsBirthday
+
+    // todo:
+    // Log your birthday in the format: January 1, 2014 using the JavaScript Date object.
+    // See link below for methods needed:
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Getter
+    console.log('Here is my birthday using JavaScript: ');
+    const month = months[myJSBDate.getMonth()];
+    // console.log(month);
+    const dayOfMonth = myJSBDate.getDate();
+    // console.log(dayOfMonth);
+    const year = myJSBDate.getFullYear();
+    // console.log(year);
+    const dayOfWeek = daysOfWeekAbbreviated[myJSBDate.getDay()];
+    console.log(dayOfWeek);
+    console.log(`${dayOfWeek} ${month} ${dayOfMonth}, ${year}`);
+
+</script>
+</body>
+</html>
