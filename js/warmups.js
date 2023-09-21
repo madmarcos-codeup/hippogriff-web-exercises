@@ -49,3 +49,25 @@ function addressToObject(address){
         streetName: streetName
     }
 }
+
+/* Write a function that accepts an array of numeric values and returns the average of those values.  */
+
+function averageOfArrayNums(arrayOfNums){
+    const numNums = arrayOfNums.length;
+    let sum = 0;
+    for (let i = 0; i < arrayOfNums.length; i++){
+        sum += arrayOfNums[i];
+    }
+    return sum / numNums;
+}
+
+const arrayOfNums1 = [4, 10, 8, 6, 9];
+
+const arrayOfNums2 = [800, 1669, 1034, 1304, 893, 1430, 1741, 927, 1401, 1800, 925, 1588, 455, 280, 995, 1536, 1195, 406, 142, 152, 355, 616, 1317, 1242, 345, 1307, 151, 235, 657, 193, 1154, 1282, 1130, 1390, 1062, 1333, 699, 1239, 170, 182, 1231, 1141, 1625, 1955, 1508, 1260, 734, 635, 8, 1712 ];
+
+const arrayOfNums3 = [ 11, 15, 13, 12, 9, 5, 16, 7, 4, 20 ];
+
+
+
+
+
