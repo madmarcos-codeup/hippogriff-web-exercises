@@ -67,6 +67,59 @@ const arrayOfNums2 = [800, 1669, 1034, 1304, 893, 1430, 1741, 927, 1401, 1800, 9
 
 const arrayOfNums3 = [ 11, 15, 13, 12, 9, 5, 16, 7, 4, 20 ];
 
+/**
+ * Is the Average of All Elements a Whole Number?
+ * Create a function named isAvgWhole that takes an array as an argument and returns true or false depending on whether the average of all elements in the array is a whole number or not.
+ *
+ * Examples
+ *
+ * >> isAvgWhole([1, 3]) ➞ true
+ * >> isAvgWhole([1, 2, 3, 4]) ➞ false
+ * >> isAvgWhole([1, 5, 6]) ➞ true
+ * >> isAvgWhole([1, 1, 1]) ➞ true
+ * >> isAvgWhole([9, 2, 2, 5]) ➞ false
+ */
+
+function isAvgWhole(arrayOfNums){
+    return averageOfArrayNums(arrayOfNums) % 1 === 0;
+}
+
+/**
+ * Count total pets
+ * Write a function named totalPets that accepts an array of objects where each object represents a person, and has a 'pets' property for their owned pets. The function should return the sum of every object's numPets property.
+ *
+ * Examples
+ *
+ * >> totalPets([
+ *       {name: 'Fernando Mendoza', pets: 1},
+ *       {name: 'Douglas Hirsh', pets: 8},
+ *       {name: 'Kenneth Howell', pets: 2}
+ *    ]) ➞ 11
+ */
+
+function totalPets(array){
+    let numPets = 0;
+    //=== with a forEach loop
+    // array.forEach(person => numPets += person.pets);
+    //=== with a for loop
+    // for (let i = 0; i < array.length; i++){
+    //   numPets +=  array[i].pets;
+    // }
+    //=== with a for ... of loop
+    for (const person of array){
+        numPets += person.pets;
+    }
+    return numPets;
+}
+
+console.log(totalPets([
+    {name: 'Fernando Mendoza', pets: 1},
+    {name: 'Douglas Hirsh', pets: 8},
+    {name: 'Kenneth Howell', pets: 2},
+    {name: 'Steve Pflug', pets: 3},
+    {name: 'DocRob', pets: 1}
+]));
+
 
 
 
