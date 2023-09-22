@@ -1,0 +1,4 @@
+h2 {
+    text-decoration: hotpink;
+/*    Not showing up because it has lower specificity than embedded style elements and style attributes   */
+}
