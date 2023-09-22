@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Forms</title>
+</head>
+<body>
+  <form action="https://request-inspector.glitch.me/" method="post">
+    <fieldset>
+      <legend>Personal Info</legend>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="username">
+      <br><br>
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city">
+      <br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+    </fieldset>
+    <br><br>
+    <fieldset>
+      <legend>Comics Preferences</legend>
+      <h4>Marvel or DC?</h4>
+      <label for="marvel">Marvel:</label>
+      <input type="radio" id="marvel" value="marvel" name="marvelOrDC">
+      <label for="dc">DC:</label>
+      <input type="radio" id="dc" value="dc" name="marvelOrDC">
+    </fieldset>
+    <fieldset>
+      <legend>Extras</legend>
+      <label for="provolone">Provolone:</label>
+      <input type="checkbox" name="extras" value="provolone" id="provolone">
+      <label for="cheddar">Cheddar:</label>
+      <input type="checkbox" name="extras" value="cheddar" id="cheddar">
+      <label for="american">American:</label>
+      <input type="checkbox" name="extras" value="american" id="american">
+    </fieldset>
+    <fieldset>
+      <legend>Destination</legend>
+      <label for="destination">Your Destination:</label>
+      <select name="destination" id="destination">
+        <option value="Colorado">Colorado</option>
+        <option value="Philippines">Philippines</option>
+        <option value="Iceland">Iceland</option>
+      </select>
+    </fieldset>
+    <br><br>
+    <fieldset>
+      <label for="bio">Bio:</label>
+      <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Tell us about yourself"></textarea>
+    </fieldset>
+    <fieldset>
+      <legend>Assorted Other Inputs</legend>
+      <label for="date">Date</label>
+      <input type="date" name="date" id="date">
+    </fieldset>
+    <input type="reset">
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
