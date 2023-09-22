@@ -99,12 +99,15 @@ function isAvgWhole(arrayOfNums){
 
 function totalPets(array){
     let numPets = 0;
+
     //=== with a forEach loop
     // array.forEach(person => numPets += person.pets);
+
     //=== with a for loop
     // for (let i = 0; i < array.length; i++){
     //   numPets +=  array[i].pets;
     // }
+
     //=== with a for ... of loop
     for (const person of array){
         numPets += person.pets;
