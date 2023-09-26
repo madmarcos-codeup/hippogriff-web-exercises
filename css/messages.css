@@ -1,0 +1,35 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+div.message {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 8px;
+    margin: 8px 16px;
+    font-size: small;
+}
+
+.message-info {
+    background-color: #cddeff;
+    color: #534fa7;
+}
+
+.message-success {
+    color: #2d8150;
+    background-color: #cff3da;
+}
+
+.message-warning {
+    color: #aea048;
+    background-color: #fcfbc9;
+}
+
+.message-error {
+    color: #8b253e;
+    background-color: #fad3d7;
+}
