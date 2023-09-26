@@ -7,6 +7,14 @@ body {
 a {
     color: coral;
 }
-li {
-    list-style-type: none;
+ul li {
+    /*list-style-type: none;*/
+    list-style-image: url("../img/9004766_shield_security_protection_secure_icon.svg");
+    font-size: 2em;
+}
+
+img[src*="9"] {
+    height: 15px;
+    width: 15px;
+    filter: invert(100%) sepia(0%) saturate(7427%) hue-rotate(23deg) brightness(118%) contrast(118%);
 }
