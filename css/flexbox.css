@@ -1,0 +1,51 @@
+.flexbox, .flex-item {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.flexbox {
+    display: flex;
+    /*flex-direction: row;*/
+    /*flex-wrap: wrap;*/
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex2 {
+    width: 1000px;
+    align-items: center;
+}
+
+.flex-item {
+    margin: 5px;
+    width: 100px;
+}
+
+.one {
+    align-self: flex-start;
+    order: 1;
+}
+
+.three {
+    flex-grow: 0.5;
+    align-self: flex-end;
+}
+
+.four {
+    flex-grow: 1;
+    align-self: flex-start;
+    order: -2;
+}
+
+.five {
+    flex-grow: 2;
+}
+
+.six {
+    order: -1;
+}
+
+.upsize {
+    font-size: 150%;
+}
+
