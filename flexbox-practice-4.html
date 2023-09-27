@@ -26,6 +26,7 @@
             width: 95%;
             max-width: 1400px;
             margin: 0 auto;
+
         }
         h1 {
             font-size: 2em;
@@ -59,12 +60,17 @@
             height: 30em;
 
             /* here we make the footer a flex container in a column layout to evenly space the sections of the footer */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
         }
 
         .top-footer {
             /* here we make the top footer section a flex container to space out the multiple lists of links */
-
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
         }
 
         footer .bottom-footer {
@@ -89,12 +95,14 @@
 
         .logo-div {
             /* here we set a larger size along the main axis and push the div a bit up for aesthetics */
-
+            /*flex-grow: 1;*/
+            margin-right: auto;
         }
 
         .social-media-links {
             /* here we make the div containing the social media links into a flex container to orient them in a row */
-
+            /*display: flex;*/
+            justify-content: center;
         }
 
         footer .top-footer a {

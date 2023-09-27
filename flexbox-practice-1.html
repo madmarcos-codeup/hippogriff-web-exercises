@@ -29,22 +29,27 @@
             height: 200px;
 
             /* first: center this item horizontally then vertically */
+            /*justify-content: center;*/
+            /*align-items: center;*/
         }
 
         #container-one .flex-item {
             /* second: user margin to center it */
+            margin: auto auto;
         }
 
         #container-two .flex-item:nth-of-type(3) {
             /* push this item all the way to the left */
-
+            /*margin-left: auto;*/
         }
 
         #container-two .flex-item:nth-of-type(2) {
             /* push item 3 all the way to the right */
-
+            /*margin-right: auto;*/
             /* and then center this item using margin on both horiz. sides */
-
+            /*margin: 0 auto;*/
+            margin-left: auto;
+            margin-right: auto;
         }
 
     </style>
