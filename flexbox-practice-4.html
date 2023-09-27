@@ -75,6 +75,9 @@
 
         footer .bottom-footer {
             /* here we ensure the social media link container is horizontally centered by setting its parent to be a flex container */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
         }
 
@@ -85,24 +88,27 @@
             width: 2.4em;
 
             /* here we make the icon wrappers into flex containers to center the icons */
-
+            display: flex;
+            justify-content: center;
         }
 
         .icon-wrapper i {
             /* here we center the icons inside their flex container wrappers */
+            align-self: center;
+            justify-self: center;
 
         }
 
         .logo-div {
             /* here we set a larger size along the main axis and push the div a bit up for aesthetics */
-            /*flex-grow: 1;*/
-            margin-right: auto;
+            flex-grow: 1;
+            position: relative;
+            bottom: 25px;
         }
 
         .social-media-links {
             /* here we make the div containing the social media links into a flex container to orient them in a row */
-            /*display: flex;*/
-            justify-content: center;
+            display: flex;
         }
 
         footer .top-footer a {
@@ -156,29 +162,29 @@
             <section class="bottom-footer">
                 <div class="social-media-links">
                     <a href="#">
-                    <span class="icon-wrapper">
-                        <i class="fab fa-facebook-f"></i>
-                    </span>
+                        <span class="icon-wrapper">
+                            <i class="fab fa-facebook-f"></i>
+                        </span>
                     </a>
                     <a href="#">
-                    <span class="icon-wrapper">
-                        <i class="fab fa-twitter"></i>
-                    </span>
+                        <span class="icon-wrapper">
+                            <i class="fab fa-twitter"></i>
+                        </span>
                     </a>
                     <a href="#">
-                    <span class="icon-wrapper">
-                        <i class="fas fa-rss"></i>
-                    </span>
+                        <span class="icon-wrapper">
+                            <i class="fas fa-rss"></i>
+                        </span>
                     </a>
                     <a href="#">
-                    <span class="icon-wrapper">
-                        <i class="fab fa-google-plus-g"></i>
-                    </span>
+                        <span class="icon-wrapper">
+                            <i class="fab fa-google-plus-g"></i>
+                        </span>
                     </a>
                     <a href="#">
-                    <span class="icon-wrapper">
-                        <i class="fab fa-linkedin-in"></i>
-                    </span>
+                        <span class="icon-wrapper">
+                            <i class="fab fa-linkedin-in"></i>
+                        </span>
                     </a>
                 </div>
                 <h5>@Copyright. All rights reserved.</h5>
