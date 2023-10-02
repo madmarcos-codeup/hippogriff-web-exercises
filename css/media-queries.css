@@ -31,10 +31,34 @@ section p {
     margin: 8px;
 }
 
+footer {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.2em;
+}
+
+nav ul {
+    display: flex;
+    gap: 10px;
+}
+
+nav ul li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
 @media screen and (min-width: 768px) {
 
       main {
           flex-direction: row;
+      }
+
+      section {
+          display: flex;
+          gap: 10px;
       }
 
 }
