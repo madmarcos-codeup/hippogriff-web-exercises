@@ -4,72 +4,116 @@
     box-sizing: border-box;
 }
 
-.all-content {
-    min-height: 100dvh;
-    background-color: #282525;
-    color: #e8e0e0;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
+body {
+    font-family: sans-serif;
     display: flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
+    margin: 10px 17px;
+    justify-content: center;
     align-items: center;
-    padding: 0 15px;
 }
 
-main {
+.alert-info, li {
+    margin: 7px 0;
+    padding: 18px 0;
+}
+
+.alert-info {
+    width: 100%;
+    border: lightgrey 2px solid;
+    text-align: center;
+    background-color: #ccffff;
+}
+
+.alert-info a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.9em;
+}
+
+h1 {
     margin: 15px 0;
+}
+
+nav {
+    width: 100%;
+    margin: 10px 0;
+}
+
+ul {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-flow: column nowrap;
+}
+
+li {
+    background-color: lightgrey;
+    text-align: center;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
 }
 
 section {
-    border: 1px solid #e8e0e0;
-    border-radius: 5px;
+    margin: 15px 0;
 }
 
-section p {
-    margin: 8px;
+.sub-section {
+    font-style: italic;
+}
+
+h2 {
+    margin: 15px 0;
+    font-size: 1.25em;
 }
 
 footer {
     width: 100%;
-    margin-top: 15px;
     display: flex;
-    justify-content: space-evenly;
-    font-size: 1.2em;
-}
-
-nav ul {
-    display: flex;
-    gap: 10px;
-}
-
-nav ul li {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 25px 0 15px 0;
 }
 
 @media screen and (min-width: 768px) {
 
-      main {
-          flex-direction: row;
-      }
-
-      section {
-          display: flex;
-          gap: 10px;
-      }
-
-}
-
-@media screen and (min-width: 1024px) {
-
-    main {
-        flex-direction: row;
-        max-width: 1024px;
-        margin: 0 auto;
+    body {
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin: 10px 25px;
     }
 
+
+    .hidden-on-desktop {
+        display: none;
+    }
+
+    nav {
+        width: unset;
+        margin: unset;
+    }
+
+    ul {
+        flex-direction: row;
+        gap: 25px;
+    }
+
+    li {
+        background-color: transparent;
+    }
+
+    .header-img {
+        width: 100%;
+    }
+
+    .main {
+        flex-basis: 60%;
+    }
+
+    .sub-section {
+        flex-basis: 35%;
+    }
 }
 
