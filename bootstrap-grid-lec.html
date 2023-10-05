@@ -83,6 +83,10 @@
     <!--1 row title bar-->
     <!--2nd row side menu that is 12, 3md col
     and content area that is 12 and 9md col -->
+
+<!--    NOTE: containers have default horiz. padding of 24-->
+<!--    AND rows have default horiz. margin of -12-->
+
 </div>
 <br>
 <div class="container">
@@ -93,10 +97,10 @@
         <div class="col-3 btn-primary">Sidebar</div>
         <div class="col-9 px-0">
 <!--            this is our content grid-->
-            <div class="container">
-                <div class="row">
+            <div class="container-fluid btn-warning px-0">
+                <div class="row mx-0">
                     <div class="col-12 col-lg-6 btn-danger">Content 1</div>
-                    <div class="col-12 col-lg-6 btn-dark">Content 2</div>
+<!--                    <div class="col-12 col-lg-6 btn-dark">Content 2</div>-->
                 </div>
             </div>
         </div>
