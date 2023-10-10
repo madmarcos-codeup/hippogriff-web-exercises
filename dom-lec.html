@@ -89,18 +89,32 @@
     // just show them what cool stuff you can do without loading a different page
 
     // get a reference to box1 id using getElementById and log it
-
+    let box1 = document.getElementById("box1");
+    console.log(box1);
 
     // play around with style
     // change the background color to purple
+    box1.style.backgroundColor = "purple";
 
     // change text color to yellow
-
+    box1.style.color = "yellow";
+    // box1.style.borderColor = "#AAA"
 
     // get a reference to both boxes using getElementsByClassName and log them
     // iterate over them and change the text color to orange
+    let boxes = document.getElementsByClassName("my-box");
+    // console.log(boxes);
+    for (let i = 0; i < boxes.length; i++) {
+      console.log(boxes[i]);
+      boxes[i].style.color = "orange";
+    }
+
 
     // get a reference to both paragraphs using getElementsByTagName and log them
+    let pars = document.getElementsByTagName("p");
+    for (let i = 0; i < pars.length; i++) {
+      console.log(pars[i]);
+    }
 
     // SHOW document.querySelector and .querySelectorAll
 
