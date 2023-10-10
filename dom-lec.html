@@ -114,33 +114,75 @@
     let pars = document.getElementsByTagName("p");
     for (let i = 0; i < pars.length; i++) {
       console.log(pars[i]);
+      pars[i].style.backgroundColor = "grey";
     }
 
     // SHOW document.querySelector and .querySelectorAll
+    box1 = document.querySelector("#box1");
+    box1.style.backgroundColor = "red";
 
     // get all the list items and log them
+    let lis = document.querySelectorAll("li");
+    // console.log(lis);
+    for (let i = 0; i < lis.length; i++) {
+      console.log(lis[i]);
+      if(i === 1) {
+        lis[i].style.backgroundColor = "blue";
+      }
+    }
+
     // examine the innerText and innerHTML properties
     // change a couple of them with HTMLish text
       // *** if you set the innerHTML and THEN set the innerText, what happens?
+    console.log(lis[0].innerText);
+    console.log(lis[0].innerHTML);
+    lis[0].innerText = "<h1>Hi there</h1>";
+    lis[0].innerHTML = "<h1>Hi there</h1>";
+    lis[0].innerText = "<h1>Hi there</h1>";
 
     // using document.forms
         //  point out the 2 fields and the button that are children of it
         // may have to use associative array syntax if form name is hyphenated
         // NOTE: you must have name attributes to do this
+    // console.log(document.forms[0][0]);
 
     // get access to username text field by id and log it
       // using getElementById
+    let userName = document.querySelector("#username");
+    console.log(userName);
+
       // using querySelector
       // what about using querySelectorAll or getElementByTagName???
 
     // change the value of the text field
     // explain difference between value and defaultValue
+    console.log(userName.value);
+    // userName.value = "Jimbo";
+    userName.defaultValue = "tom";
+
+    if(userName.value !== userName.defaultValue) {
+      console.log("value is different than defaultValue!");
+    } else {
+      console.log("No change");
+    }
 
     // get the data-dbid attribute for the paragraphs
     //  explain importance of data-dbid
     // show hasAttribute and getAttribute data-dbid
+    myPs = document.querySelectorAll("p");
+    for (let i = 0; i < myPs.length; i++) {
+      console.log(myPs[i].getAttribute("id"));
+      console.log(myPs[i].id);
+      console.log(myPs[i].getAttribute("data-xxxdbid"));
+      console.log(myPs[i].hasAttribute("data-xxxdbid"));
+      console.log(myPs[i].setAttribute("data-xxxdbid", 555));
+      //
+    }
 
     // change the cthulhu image  src attribute
+    let img = document.querySelector("#cthulhu");
+    console.log(img.src);
+    img.src = "https://upload.wikimedia.org/wikipedia/en/e/ec/Piratedavyjones.JPG";
 
     // ------------------ attributes and properties
 
