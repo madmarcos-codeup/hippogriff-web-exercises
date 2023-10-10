@@ -16,14 +16,18 @@
         width: 50px;
       }
 
+      ul {
+        background-color: pink;
+      }
+
       p {
         margin: 0;
         padding: 0;
       }
 
-      .courier-medium {
+      .courier-large {
         font-family: monospace;
-        font-size: medium;
+        font-size: xxx-large;
       }
 
     </style>
@@ -47,7 +51,7 @@
 
   <h5>Lists</h5>
 
-  <ul id="my-list">
+  <ul id="my-list" style="background-color: tomato;">
     <li>Item 1</li>
     <li>Item 2</li>
     <li>Item 3</li>
@@ -187,15 +191,34 @@
     // ------------------ attributes and properties
 
     // class manipulation
-    // add courier-medium class to box1
+    // add courier-large class to box1
+    box1 = document.querySelector("#box1");
+    box1.classList.add("courier-large");
 
-    // then remove courier medium
+    // then remove courier large
+    box1.classList.remove("courier-large");
 
-    // for all LIs, add the class courier medium
+    // for all LIs, add the class courier large
+    const allLIs = document.querySelectorAll("li");
+    for (let i = 0; i < allLIs.length; i++) {
+      allLIs[i].classList.add("courier-large");
+    }
 
-    // toggle courier-medium for li Item 2
+    // toggle courier-large for li Item 2
+    // allLIs[1].classList.toggle("courier-large");
+    // allLIs[1].classList.toggle("courier-large");
+    // allLIs[1].classList.toggle("courier-large");
+
     // loop and check the innerText to determine to toggle
+    // handy if we don't know the index of the list item we want to toggle
+    for (let i = 0; i < allLIs.length; i++) {
+      if(allLIs[i].innerText === "Item 2") {
+        allLIs[i].classList.toggle("courier-large");
+      }
+    }
+
     // then try using nth-of-type in querySelector
+    document.querySelector("li:nth-of-type(2)").classList.toggle("courier-large");
 
     // override the font-family of the 2nd LI using style
 
@@ -204,7 +227,8 @@
 
     // another example. in css, set the background-color for the UL
     // now override with the inline style
-
+    const myUL = document.querySelector("ul");
+    myUL.style.backgroundColor = "purple";
     // remind that you cannot easily change external or embedded styles
 
 
