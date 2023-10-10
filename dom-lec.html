@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Lecture</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+      .my-box {
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+
+<div class="mt-2 container-fluid">
+  <h5>Selectors and attributes</h5>
+
+  <div class="d-flex gap-2">
+    <div id="box1" class="my-box">
+      <p id="p1" data-dbid="1">Box 1</p>
+    </div>
+
+    <div id="box2" class="my-box">
+      <p id="p2" data-dbid="2">Box 2</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h5>Lists</h5>
+
+  <ul id="my-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <hr>
+
+  <h5>Form elements</h5>
+
+  <form id="my-form" name="my-form">
+    <label for="username" class="form-label">Username</label>
+    <input id="username" name="username" class="form-control" type="text" value="tom" placeholder="Enter user name">
+
+    <label for="password" class="form-label">Password</label>
+    <input id="password" type="password" class="form-control" value="howdy">
+
+    <button id="login-btn" class="form-control mt-2 btn-primary" type="button">Login</button>
+  </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script>
+
+    // explain importance of DOM manipulation
+    // changing web content that does not need to redirect or refresh page
+    //  e.g., SPAs
+
+    // show dom_add_remove_overthetop.html as an example and point out NO REFRESHES NEEDED
+    // in fact, what happens if we do refresh?
+    // but don't dig into the code
+    // just show them what cool stuff you can do without loading a different page
+
+    // get a reference to box1 id using getElementById and log it
+
+
+    // play around with style
+    // change the background color to purple
+
+    // change text color to yellow
+
+
+    // get a reference to both boxes using getElementsByClassName and log them
+    // iterate over them and change the text color to orange
+
+    // get a reference to both paragraphs using getElementsByTagName and log them
+
+    // SHOW document.querySelector and .querySelectorAll
+
+    // get all the list items and log them
+    // examine the innerText and innerHTML properties
+    // change a couple of them with HTMLish text
+
+    // using document.forms
+        //  point out the 2 fields and the button that are children of it
+        // may have to use associative array syntax if form name is hyphenated
+        // NOTE: you must have name attributes to do this
+
+    // get access to username text field by id and log it
+      // using getElementById
+      // using querySelector
+      // what about using querySelectorAll or getElementByTagName???
+
+    // change the value of the text field
+    // explain difference between value and defaultValue
+
+    // get the data-dbid attribute for the paragraphs
+    //  explain importance of data-dbid
+    // show hasAttribute and getAttribute data-dbid
+
+</script>
+</body>
+</html>

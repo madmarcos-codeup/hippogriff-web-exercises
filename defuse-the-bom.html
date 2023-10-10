@@ -19,19 +19,20 @@
         // TODO: This function needs to be called once every second
         function updateTimer() {
             if (detonationTimer == 0) {
-                alert('EXTERMINATE!');
-                document.body.innerHTML = '';
+                // alert('EXTERMINATE!');
+                document.body.innerHTML = '<img src="https://ahf.nuclearmuseum.org/wp-content/uploads/2014/06/Castle%20Bravo.jpg">';
             } else if (detonationTimer > 0) {
                 document.getElementById('timer').innerHTML = detonationTimer;
             }
 
             detonationTimer--;
         }
+        const intervalId = window.setInterval(updateTimer, 1000);
 
         // TODO: When this function runs, it needs to
         // cancel the interval/timeout for updateTimer()
         function defuseTheBOM() {
-
+            clearInterval(intervalId);
         }
 
         // Don't modify anything below this line!
