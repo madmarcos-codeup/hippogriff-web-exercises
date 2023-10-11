@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient Demo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        .my-box {
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+
+            /*background: linear-gradient(90deg, #878787, #04ff33);*/
+            /*background-size: 1000% 400%;*/
+            /*animation: gradient 6s ease infinite;*/
+            /*height: 100vh;*/
+        }
+
+        /*@keyframes gradient {*/
+        /*    0% {*/
+        /*        background-position: 0% 50%;*/
+        /*    }*/
+        /*    50% {*/
+        /*        background-position: 100% 50%;*/
+        /*    }*/
+        /*    100% {*/
+        /*        background-position: 0% 50%;*/
+        /*    }*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h4>Gradient Demo</h4>
+
+        <div id="box1" class="my-box">
+            <span>Box</span>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script>
+    const colors = ["#878787", "#878a86", "#868d84", "#869083", "#859482", "#859780", "#849a7f", "#839d7d", "#82a07c", "#82a37a", "#81a679", "#80a977", "#7eac76", "#7daf74", "#7cb272", "#7bb571", "#79b86f", "#78bc6d", "#76bf6b", "#74c26a", "#72c568", "#70c866", "#6ecb64", "#6cce62", "#6ad160", "#67d45e", "#64d75b", "#61da59", "#5edd57", "#5ae054", "#57e352", "#52e64f", "#4ee94c", "#49ed49", "#43f046", "#3cf343", "#35f63f", "#2bf93c", "#1efc37", "#04ff33"];
+    let colorIndex = 0;
+    let colorDir = 1; // which way the current color is moving (start to end, or end to start)
+
+    function changeColor() {
+        const box1 = document.querySelector("#box1");
+        box1.style.backgroundColor = colors[colorIndex];
+        colorIndex += colorDir;
+        // change the direction of the color transition if the current color index has reached the start or end of the array
+        if(colorIndex === colors.length - 1) {
+            colorDir = -1;
+        } else if(colorIndex === 0) {
+            colorDir = 1;
+        }
+    }
+
+    window.setInterval(changeColor, 25);
+
+</script>
+</body>
+</html>

@@ -56,7 +56,7 @@
 <hr>
 
 <h1>Form</h1>
-<form id="form">
+<form id="my-form">
     <label>Test field: <input id="my-input" type="text" /></label>
     <br /><br />
     <button id="btn-submit" type="submit">Submit</button>
@@ -121,11 +121,48 @@
 
   // create click and dblclick events on box1
   // create mouseenter and mouseleave on box1
+    // step 1: grab a ref to box1
+    // step 2: add the event listener
+    // step 3: write the function it is supposed to do when the event happens
+  //   document.querySelector("#box1").addEventListener("click", function() {
+  //       console.log("box1 clicked");
+  //   });
+  // document.querySelector("#box1").addEventListener("dblclick", function() {
+  //     console.log("box1 double-clicked");
+  // });
 
   // create multiple listeners on the boxes and use event.target
+  // document.querySelector("#box2").addEventListener("click", function() {
+  //     console.log("box2 clicked");
+  // });
+  // document.querySelector("#box2").addEventListener("dblclick", function() {
+  //     console.log("box2 double-clicked");
+  // });
+  // document.querySelector("#box3").addEventListener("click", function() {
+  //     console.log("box3 clicked");
+  // });
+  // document.querySelector("#box3").addEventListener("dblclick", function() {
+  //     console.log("box3 double-clicked");
+  // });
+  // step 1: grab an array with references to all the boxes
+  // step 2: loop over the array
+  // step 3: give each array element a click handler
+  const boxes = document.querySelectorAll(".my-box");
+  for (let i = 0; i < boxes.length; i++) {
+      boxes[i].addEventListener("click", function(event) {
+          // console.log(boxes[i].id + " has been clicked");
+          event.target.style.backgroundColor = "yellow";
+      });
+  }
+
 
   // show preventDefault on btn-submit
     // have the button output what was typed in the innerText of log
+    document.querySelector("#btn-submit").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        console.log("help!");
+    });
 
   // show change event on select and how to see what was selected (value and selectedIndex)
 
