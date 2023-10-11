@@ -3,6 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM Events</title>
+
+    <style>
+      .red {
+        background-color: red;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .green {
+        background-color: green;
+      }
+
+      .boxes {
+        display: flex;
+      }
+
+      .my-box {
+        border: 1px solid black;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .courier-large {
+        font-family: Monospaced,serif;
+        font-size: xxx-large;
+      }
+
+    </style>
 </head>
 <body>
 <h1 style="text-align: center">DOM Events</h1>
@@ -11,36 +43,47 @@
 <button id="btn1">Click Me!</button>
 <button id="btn2">Remove Listener</button>
 
+<hr>
 
+<h1>Mouse events</h1>
 
-<h1>Keyup</h1>
-<input id="keyupEvent"/>
+<div class="boxes">
+  <div id="box1" class="my-box">Box 1</div>
+  <div id="box2" class="my-box">Box 2</div>
+  <div id="box3" class="my-box">Box 3</div>
+</div>
 
-
-
-
-<h1>Change</h1>
-<label>
-  Choose an ice cream flavor:
-  <select class="ice-cream" name="ice-cream">
-    <option value="">Select One …</option>
-    <option value="chocolate">Chocolate</option>
-    <option value="sardine">Sardine</option>
-    <option value="vanilla">Vanilla</option>
-  </select>
-</label>
-
-<div class="result"></div>
-
-
+<hr>
 
 <h1>Form</h1>
 <form id="form">
-  <label>Test field: <input id="inputText" type="text" /></label>
-  <br /><br />
-  <button type="submit">Submit form</button>
+    <label>Test field: <input id="my-input" type="text" /></label>
+    <br /><br />
+    <button id="btn-submit" type="submit">Submit</button>
 </form>
 <p id="log"></p>
+
+<hr>
+
+<h1>Change</h1>
+<label>
+    Choose an ice cream flavor:
+    <select id="ice-cream">
+        <option value="">Select One …</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="sardine">Sardine</option>
+        <option value="vanilla">Vanilla</option>
+    </select>
+</label>
+
+<hr>
+
+<h1>Key events</h1>
+<input id="my-input" type="text" placeholder="type something"/>
+
+
+<div class="result"></div>
+
 
 
 
@@ -53,8 +96,26 @@
   // remove the listener
 
   // -----------------------------------------
+  // mouse events
+
+  // create click and dblclick events on box1
+  // create mouseenter and mouseleave on box1
+
+  // create multiple listeners on the boxes and use event.target
+
+  // show preventDefault on btn-submit
+    // have the button output what was typed in the innerText of log
+
+  // show change event on select and how to see what was selected (value and selectedIndex)
 
 
+  // -----------------------------------------
+  // key events
+
+  // create event listeners for keydown, keyup, and keypress
+  // be sure to use event.key to evaluate the key
+
+  // explain diff between keydown and keypress
 
 
 </script>
