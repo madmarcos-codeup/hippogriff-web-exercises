@@ -55,6 +55,10 @@
 
 <hr>
 
+<a id="my-anchor" href="https://www.google.com">Go to Google</a>
+
+<hr>
+
 <h1>Form</h1>
 <form id="my-form">
     <label>Test field: <input id="my-input" type="text" /></label>
@@ -90,6 +94,7 @@
 <script>
   "use strict";
     // define event listener and handler
+  // console.log(document.querySelector("#ice-cream").options);
 
     // create a function and add a click event to btn1
     function sayHello(event) {
@@ -152,20 +157,48 @@
       boxes[i].addEventListener("click", function(event) {
           // console.log(boxes[i].id + " has been clicked");
           event.target.style.backgroundColor = "yellow";
+          // this.style.backgroundColor = "yellow";
+      });
+
+      boxes[i].addEventListener("mouseenter", function() {
+          this.classList.add("green");
+      });
+      boxes[i].addEventListener("mouseleave", function() {
+          this.classList.remove("green");
       });
   }
 
+  // add mouseenter and mouseleave listeners to all of the boxes
+  // change their bgcolor etc.
+
+
+    // document.querySelector("#my-anchor").addEventListener("click", function(event) {
+    //     event.preventDefault();
+    // });
 
   // show preventDefault on btn-submit
     // have the button output what was typed in the innerText of log
-    document.querySelector("#btn-submit").addEventListener("click", function(event) {
-        event.preventDefault();
+    // document.querySelector("#btn-submit").addEventListener("click", function(event) {
+    //     event.preventDefault();
+    //
+    //     console.log("help!");
+    // });
 
-        console.log("help!");
-    });
+  // document.querySelector("#my-form").addEventListener("submit", function(event) {
+  //     event.preventDefault();
+  //
+  //     console.log("submit prevented");
+  // });
 
   // show change event on select and how to see what was selected (value and selectedIndex)
-
+    const mySelect = document.querySelector("#ice-cream");
+    mySelect.addEventListener("change", function(event) {
+        console.log(event.target.value);
+        if(event.target.value === "") {
+            console.log("Select a real ice cream");
+        }
+        console.log(event.target.selectedIndex);
+    });
 
   // -----------------------------------------
   // key events
