@@ -37,3 +37,12 @@
 #toggle-btn:hover {
     background-color: #0056b3;
 }
+
+.my-font {
+    font-family: monospace;
+    color: cornflowerblue;
+}
+
+.card-color {
+    background-color: saddlebrown;
+}
