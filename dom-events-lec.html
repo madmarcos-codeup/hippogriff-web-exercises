@@ -89,11 +89,32 @@
 
 <script>
   "use strict";
-  // define event listener and handler
+    // define event listener and handler
 
-  // create a function and add a click event to btn1
+    // create a function and add a click event to btn1
+    function sayHello(event) {
+        console.log("Hello!");
+
+        console.log(event);
+    }
+    // step 1: get a reference to the button
+    const btn1 = document.querySelector("#btn1");
+    // step 2: create the event listener on btn1
+
+    // introduce the use of anonymous functions
+
+    btn1.addEventListener("click", sayHello);
+    btn1.addEventListener("click", function() {
+        console.log("world!");
+    });
 
   // remove the listener
+    function removeListener(event) {
+        btn1.removeEventListener("click", sayHello);
+    }
+    const btn2 = document.querySelector("#btn2");
+    btn2.addEventListener("click", removeListener);
+
 
   // -----------------------------------------
   // mouse events

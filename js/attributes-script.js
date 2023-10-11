@@ -1,6 +1,7 @@
 let count = 0;
 let currentColorIndex = -1;
-const colors = ["saddlebrown", "yellow", "firebrick", "pink", "cyan"];
+// const colors = ["saddlebrown", "yellow", "firebrick", "pink", "cyan"];
+const colors = ["#fafa6e", "#d9f271", "#b9e976", "#9cdf7c", "#7fd482", "#64c987", "#4abd8c", "#30b08e", "#14a38f", "#00968e", "#00898a", "#007b84", "#106e7c", "#1d6172", "#265466", "#2a4858"];
 
 function changeProfilePic() {
     document.querySelector("#profile-pic").src = "https://upload.wikimedia.org/wikipedia/en/e/ec/Piratedavyjones.JPG";
@@ -22,7 +23,10 @@ function changeCardColor() {
     // }
     // restrict currentColorIndex to just the indexes in colors
     // this wraps values >= colors.length back around to 0
+    console.log("value of index before mod: " + currentColorIndex);
     currentColorIndex = currentColorIndex % colors.length;
+    console.log("value of index after mod: " + currentColorIndex);
+
     document.querySelector("#profile-card").style.backgroundColor = colors[currentColorIndex];
 }
 
@@ -38,8 +42,8 @@ function doEvents() {
         changeDescriptionFont();
 
     } else if(count === 4) {
-        const newName = window.prompt("Enter a new profile name");
-        document.querySelector("#profile-name").innerHTML = newName;
+        // const newName = window.prompt("Enter a new profile name");
+        // document.querySelector("#profile-name").innerHTML = newName;
     }
 
     // every 2 seconds, toggle the card color
