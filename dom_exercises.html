@@ -33,6 +33,25 @@
 
 <script>
     "use strict";
+
+    document.querySelector("#main-header").addEventListener("click", function(event) {
+        this.style.backgroundColor = "orange";
+    });
+
+    document.querySelector("p").addEventListener("dblclick", function() {
+        this.style.fontSize = "18px";
+    });
+
+    const myLIs = document.querySelectorAll("li");
+    for (let i = 0; i < myLIs.length; i++) {
+        myLIs[i].addEventListener("mouseenter", function() {
+            this.style.color = "red";
+        });
+        myLIs[i].addEventListener("mouseleave", function() {
+            this.style.color = "black";
+        });
+    }
+
     document.querySelector("#btn1").addEventListener("click", function() {
         // TODO: Uncomment next line and get the main header element by id
         const mainHeader = document.querySelector("#main-header");

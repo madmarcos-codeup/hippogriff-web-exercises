@@ -83,10 +83,10 @@
 <hr>
 
 <h1>Key events</h1>
-<input id="my-input" type="text" placeholder="type something"/>
+<input id="my-key-input" type="text" placeholder="type something"/>
 
 
-<div class="result"></div>
+<div id="result"></div>
 
 
 
@@ -207,8 +207,31 @@
   // be sure to use event.key to evaluate the key
 
   // explain diff between keydown and keypress
-
-
+    // step 1: get a ref for the input
+  const myInput = document.querySelector("#my-key-input");
+  myInput.addEventListener("keydown", function(event) {
+      // console.log(event.key + " is down");
+      // console.log(event);
+      // if(event.ctrlKey === true && event.altKey === true) {
+      //     console.log(event.key + " is down");
+      // }
+  });
+  myInput.addEventListener("keyup", function(event) {
+  //     console.log(event.key + " is up");
+      if(event.key === " ") {
+          document.querySelector("#result").innerText += "&nbsp;";
+      } else {
+          document.querySelector("#result").innerText += event.key;
+      }
+      // console.log(event.key);
+  });
+  myInput.addEventListener("keypress", function(event) {
+      // console.log(event.key + " is pressed");
+      // output the pressed key to the div with id result
+      // step 1: get a ref to result
+      // step 2: append or concat the key pressed to its innerText
+      // document.querySelector("#result").innerText += event.key;
+  });
 </script>
 </body>
 </html>
