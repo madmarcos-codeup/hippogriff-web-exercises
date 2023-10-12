@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM Intro</title>
+</head>
+<body>
+
+<script>
+    "use strict";
+
+    // bom methods
+
+    // recall prompt, confirm, alert
+    // explain window object
+    // alert("hello world");
+    // prompt("enter something");
+    // window.confirm("yay or nay?");
+
+    // print location
+    console.log(window.location);
+
+    // redirect via location
+    // location = "https://www.google.com";
+
+    // reload/refresh the page (may come from cache)
+    // DON'T UNCOMMENT THE BELOW LINE!!!
+    // window.location.reload();
+
+    // have the browser log hello every 2 seconds
+    function sayHello() {
+        console.log("hello");
+    }
+
+    function sayHelloAndStopAfter3Intervals() {
+        sayHello();
+
+        counter++;
+
+        console.log(counter);
+        if(counter >= 3) {
+            // stop after saying hello 3 times
+            window.clearInterval(intervalId);
+        }
+    }
+
+    // sayHello();
+    let counter = 0;
+    const intervalId = window.setInterval(sayHelloAndStopAfter3Intervals, 2000);
+
+    // big problem!
+    // how to stop it after the 3rd hello?
+
+    // say world after 3 seconds
+    function sayWorld() {
+        console.log("world!");
+    }
+    const timeoutId = window.setTimeout(sayWorld, 3000);
+
+
+    // cancel the timeout
+    window.clearTimeout(timeoutId);
+
+</script>
+</body>
+</html>

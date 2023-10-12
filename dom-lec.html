@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Lecture</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+      .my-box {
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+      }
+
+      ul {
+        background-color: pink;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .courier-large {
+        font-family: monospace;
+        font-size: xxx-large;
+      }
+
+    </style>
+</head>
+<body>
+
+<div class="mt-2 container-fluid">
+  <h5>Selectors and attributes</h5>
+
+  <div class="d-flex gap-2">
+    <div id="box1" class="my-box">
+      <p id="p1" data-dbid="1">Box 1</p>
+    </div>
+
+    <div id="box2" class="my-box">
+      <p id="p2" data-dbid="2">Box 2</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h5>Lists</h5>
+
+  <ul id="my-list" style="background-color: tomato;">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <hr>
+
+  <h5>Form elements</h5>
+
+  <form id="my-form" name="my-form">
+    <label for="username" class="form-label">Username</label>
+    <input id="username" name="username" class="form-control" type="text" value="tom" placeholder="Enter user name">
+
+    <label for="password" class="form-label">Password</label>
+    <input id="password" type="password" class="form-control" value="howdy">
+
+    <button id="login-btn" class="form-control mt-2 btn-primary" type="button">Login</button>
+  </form>
+
+  <hr>
+
+  <h5>Images and the src attribute</h5>
+
+  <img id="cthulhu" src="images/cthulhu.jpeg" alt="cthulhu">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script>
+
+    // explain importance of DOM manipulation
+    // changing web content that does not need to redirect or refresh page
+    //  e.g., SPAs
+
+    // show dom_add_remove_overthetop.html as an example and point out NO REFRESHES NEEDED
+    // in fact, what happens if we do refresh?
+    // but don't dig into the code
+    // just show them what cool stuff you can do without loading a different page
+
+    // get a reference to box1 id using getElementById and log it
+    let box1 = document.getElementById("box1");
+    console.log(box1);
+
+    // play around with style
+    // change the background color to purple
+    box1.style.backgroundColor = "purple";
+
+    // change text color to yellow
+    box1.style.color = "yellow";
+    // box1.style.borderColor = "#AAA"
+
+    // get a reference to both boxes using getElementsByClassName and log them
+    // iterate over them and change the text color to orange
+    let boxes = document.getElementsByClassName("my-box");
+    // console.log(boxes);
+    for (let i = 0; i < boxes.length; i++) {
+      console.log(boxes[i]);
+      boxes[i].style.color = "orange";
+    }
+
+
+    // get a reference to both paragraphs using getElementsByTagName and log them
+    let pars = document.getElementsByTagName("p");
+    for (let i = 0; i < pars.length; i++) {
+      console.log(pars[i]);
+      pars[i].style.backgroundColor = "grey";
+    }
+
+    // SHOW document.querySelector and .querySelectorAll
+    box1 = document.querySelector("#box1");
+    box1.style.backgroundColor = "red";
+
+    // get all the list items and log them
+    let lis = document.querySelectorAll("li");
+    // console.log(lis);
+    for (let i = 0; i < lis.length; i++) {
+      console.log(lis[i]);
+      if(i === 1) {
+        lis[i].style.backgroundColor = "blue";
+      }
+    }
+
+    // examine the innerText and innerHTML properties
+    // change a couple of them with HTMLish text
+      // *** if you set the innerHTML and THEN set the innerText, what happens?
+    console.log(lis[0].innerText);
+    console.log(lis[0].innerHTML);
+    lis[0].innerText = "<h1>Hi there</h1>";
+    lis[0].innerHTML = "<h1>Hi there</h1>";
+    lis[0].innerText = "<h1>Hi there</h1>";
+
+    // using document.forms
+        //  point out the 2 fields and the button that are children of it
+        // may have to use associative array syntax if form name is hyphenated
+        // NOTE: you must have name attributes to do this
+    // console.log(document.forms[0][0]);
+
+    // get access to username text field by id and log it
+      // using getElementById
+    let userName = document.querySelector("#username");
+    console.log(userName);
+
+      // using querySelector
+      // what about using querySelectorAll or getElementByTagName???
+
+    // change the value of the text field
+    // explain difference between value and defaultValue
+    console.log(userName.value);
+    // userName.value = "Jimbo";
+    userName.defaultValue = "tom";
+
+    if(userName.value !== userName.defaultValue) {
+      console.log("value is different than defaultValue!");
+    } else {
+      console.log("No change");
+    }
+
+    // get the data-dbid attribute for the paragraphs
+    //  explain importance of data-dbid
+    // show hasAttribute and getAttribute data-dbid
+    myPs = document.querySelectorAll("p");
+    for (let i = 0; i < myPs.length; i++) {
+      console.log(myPs[i].getAttribute("id"));
+      console.log(myPs[i].id);
+      console.log(myPs[i].getAttribute("data-xxxdbid"));
+      console.log(myPs[i].hasAttribute("data-xxxdbid"));
+      console.log(myPs[i].setAttribute("data-xxxdbid", 555));
+      //
+    }
+
+    // change the cthulhu image  src attribute
+    let img = document.querySelector("#cthulhu");
+    console.log(img.src);
+    img.src = "https://upload.wikimedia.org/wikipedia/en/e/ec/Piratedavyjones.JPG";
+
+    // ------------------ attributes and properties
+
+    // class manipulation
+    // add courier-large class to box1
+    box1 = document.querySelector("#box1");
+    box1.classList.add("courier-large");
+
+    // then remove courier large
+    box1.classList.remove("courier-large");
+
+    // for all LIs, add the class courier large
+    const allLIs = document.querySelectorAll("li");
+    for (let i = 0; i < allLIs.length; i++) {
+      allLIs[i].classList.add("courier-large");
+    }
+
+    // toggle courier-large for li Item 2
+    // allLIs[1].classList.toggle("courier-large");
+    // allLIs[1].classList.toggle("courier-large");
+    // allLIs[1].classList.toggle("courier-large");
+
+    // loop and check the innerText to determine to toggle
+    // handy if we don't know the index of the list item we want to toggle
+    for (let i = 0; i < allLIs.length; i++) {
+      if(allLIs[i].innerText === "Item 2") {
+        allLIs[i].classList.toggle("courier-large");
+      }
+    }
+
+    // then try using nth-of-type in querySelector
+    document.querySelector("li:nth-of-type(2)").classList.toggle("courier-large");
+
+    // override the font-family of the 2nd LI using style
+
+    // now try to add the courier-medium class again
+    // doesn't change back. why???
+
+    // another example. in css, set the background-color for the UL
+    // now override with the inline style
+    const myUL = document.querySelector("ul");
+    myUL.style.backgroundColor = "purple";
+    // remind that you cannot easily change external or embedded styles
+
+
+  </script>
+</body>
+</html>

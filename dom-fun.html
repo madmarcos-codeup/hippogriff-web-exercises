@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Fun</title>
+
+    <style>
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .my-box {
+            width: 50px;
+            height: 50px;
+            /*border: 2px solid black;*/
+            position: absolute;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="box1" class="my-box green"></div>
+    <div id="box2" class="my-box red"></div>
+
+<script>
+    // document.querySelector("body").style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/en/e/ec/Piratedavyjones.JPG")';
+    const collisionSound = new Audio('sounds/door.mp3');
+
+    const box1 = document.querySelector("#box1");
+    box1.style.top = "10px";
+    box1.style.left = "10px";
+    box1.style.height = "50px";
+    box1.style.width = "50px";
+
+    const box2 = document.querySelector("#box2");
+    box2.style.top = "20px";
+    box2.style.left = "120px";
+    box2.style.height = "50px";
+    box2.style.width = "50px";
+
+    function handleKeyDown(event) {
+        switch(event.key) {
+            case "w":
+                moveBox(-5, 0);
+                break;
+            case "s":
+                moveBox(5, 0);
+                break;
+            case "a":
+                moveBox(0, -5);
+                break;
+            case "d":
+                moveBox(0, 5);
+                break;
+        }
+    }
+
+    function moveBox(upChange, leftChange) {
+        let top = parseInt(box1.style.top);
+        let left = parseInt(box1.style.left);
+        if(isNaN(top)) {
+            top = 0;
+        }
+        if(isNaN(left)) {
+            left = 0;
+        }
+        top += upChange;
+        left += leftChange;
+
+        const newPosition = checkForCollision(top, left, parseInt(box1.style.width), parseInt(box1.style.height));
+
+        box1.style.top = newPosition.top + "px";
+        box1.style.left = newPosition.left + "px";
+    }
+
+    // determines if box1 collides with box2
+    // if so, returns an object with the new top and left to assign to box1
+    function checkForCollision(top, left, width, height) {
+        const box2Top = parseInt(box2.style.top);
+        const box2Left = parseInt(box2.style.left);
+        const box2Width = parseInt(box2.style.width);
+        const box2Height = parseInt(box2.style.height);
+        // check for vertical collision
+
+        let newCoords = {
+            top,
+            left
+        };
+        if((top + height) > box2Top && top < (box2Top + box2Height)) {
+            // console.log("vertical collision");
+
+            if((left + width) > box2Left && left < (box2Left + box2Width)) {
+                // console.log("horizontal collision");
+                // console.log("collision");
+                collisionSound.play();
+
+                if(top < box2Top || top > (box2Top + box2Height)) {
+                    newCoords.left = box2Left - width;
+                } else {
+                    newCoords.top = box2Top - height;
+                }
+            }
+        }
+        return newCoords;
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+</script>
+</body>
+
+</html>

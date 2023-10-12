@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script>
+    "use strict";
+
+    let keysPressed = "";
+
+    document.addEventListener("keyup", function(event) {
+        keysPressed += event.key;
+        console.log(keysPressed);
+    });
+</script>
+</body>
+</html>
