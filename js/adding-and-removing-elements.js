@@ -1,47 +1,44 @@
-const addCardButton = document.querySelector("header button");
+const gizmoList = [
+    {
+        id: 1,
+        title: "Lightsaber",
+        imgSrc: "img/luke-with-lighbsaber.png",
+        imgAlt: "Luke Skywalker tries the light saber in Obi Wan Kenobi's house on Tatooine",
+        description: "A lightsaber is a plasma blade emitted from a hilt through a kyber crystal, which can be shut off at will. It can cut through almost anything, including blast doors, but takes specialized training to use well."
+    },
+    {
+        id: 2,
+        title: "Hoverboard",
+        imgSrc: "img/hoverboard.png",
+        imgAlt: "Marty McFly on the hoverboard in Back to the Future II",
+        description: "A hoverboard is a skateboard that hovers above the ground and moves forward under its own power."
+    },
+    {
+        id: 3,
+        title: "Replicator",
+        imgSrc: "img/replicator.png",
+        imgAlt: "In a futuristic setting, a cup of coffee materializes out of a hazy fog",
+        description: "A replicator is a device that transforms any matter, including waste or trash, into any other object or material. It can break anything down into its component atoms and rearrange those atoms into any shape."
+    }
+];
 
-const addCardSubmitButton = document.querySelector("div#addCardFormWrapper button");
-
-const editButtons = document.querySelectorAll("button.edit");
-
-const removeButtons = document.querySelectorAll("button.remove");
-
-addCardButton.addEventListener('click', () => {
-    document.querySelector("#addCardFormWrapper").classList.toggle('hideForm');
-    document.querySelector("#addCardFormWrapper").classList.toggle('showForm');
-});
-
-addCardSubmitButton.addEventListener('click', event => {
-    // very important !!!!!!!!!
-    event.preventDefault();
-
-    const newCardTitle = document.querySelector("#title").value;
-    console.log(newCardTitle);
-    const newCardImageLink = document.querySelector("#image").value;
-    console.log(newCardImageLink);
-    const newCardDescription = document.querySelector("#description").value;
-    console.log(newCardDescription);
-
+function generateCard(gizmoObject){
     const newCard = document.createElement("div");
     newCard.classList.add('gizmo');
+    newCard.dataset.id = gizmoObject.id;
 
-
-    // Step 1: Create the element
     const newCardH2El = document.createElement("h2");
-    // Step 2: Use JS methods to define the element's attributes
-    // and content
-    newCardH2El.innerText = newCardTitle;
-    // Step 3: Add the element to the DOM
+    newCardH2El.innerText = gizmoObject.title;
     newCard.appendChild(newCardH2El);
 
     const newCardImgEl = document.createElement("img");
-    newCardImgEl.src = newCardImageLink;
-    newCardImgEl.alt = newCardTitle;
+    newCardImgEl.src = gizmoObject.imgSrc;
+    newCardImgEl.alt = gizmoObject.imgAlt;
     newCard.appendChild(newCardImgEl);
 
-    const newCardPEl = document.createElement("p");
-    newCardPEl.innerText = newCardDescription;
-    newCard.appendChild(newCardPEl);
+    const newCardP = document.createElement("p");
+    newCardP.innerText = gizmoObject.description;
+    newCard.appendChild(newCardP);
 
     const newCardEditButton = document.createElement("button");
     newCardEditButton.innerText = "Edit";
@@ -53,8 +50,40 @@ addCardSubmitButton.addEventListener('click', event => {
     newCardRemoveButton.addEventListener('click', handleRemoveButtonClick);
     newCard.appendChild(newCardRemoveButton);
 
+    return newCard;
+}
+
+const addCardButton = document.querySelector("header button");
+
+const addCardSubmitButton = document.querySelector("div#addCardFormWrapper button");
+
+const editButtons = document.querySelectorAll("button.edit");
+
+const removeButtons = document.querySelectorAll("button.remove");
+
+const gizmosDiv = document.querySelector("#gizmos");
+
+
+addCardButton.addEventListener('click', () => {
+    document.querySelector("#addCardFormWrapper").classList.toggle('hideForm');
+    document.querySelector("#addCardFormWrapper").classList.toggle('showForm');
+});
+
+addCardSubmitButton.addEventListener('click', event => {
+    // very important !!!!!!!!!
+    event.preventDefault();
+
+    const newCardObject = {
+        // using a global variable inside a function is questionable
+        id: gizmosDiv.children.length + 1,
+        title: document.querySelector("#title").value,
+        imgSrc: document.querySelector("#image").value,
+        imgAlt: document.querySelector("#title").value,
+        description: document.querySelector("#description").value
+    }
+
     // Add the new elements to the page
-    document.querySelector("#gizmos").appendChild(newCard);
+    document.querySelector("#gizmos").appendChild(generateCard(newCardObject));
     addCardButton.click();
 });
 
@@ -75,18 +104,20 @@ addCardSubmitButton.addEventListener('click', event => {
 // }
 
 function handleEditButtonClick(event){
-    const headingText = event.target.parentElement.firstElementChild.innerText;
-    console.log(headingText);
 
-    const imageLink = event.target.parentElement.querySelector("img").getAttribute("src");
-    console.log(imageLink);
-
-    const description = event.target.parentElement.firstElementChild.nextElementSibling.nextElementSibling.innerText;
-    console.log(description);
-
-    event.target.parentElement.firstElementChild.innerText = prompt("Enter the new title");
-
+    const modalWrapper = document.querySelector("#editCardModalWrapper");
+    modalWrapper.classList.remove("hideModal");
+    modalWrapper.classList.add("displayModal");
 }
+
+window.addEventListener('click', event => {
+    const modalWrapper = document.querySelector("#editCardModalWrapper");
+    if (event.target === document.querySelector("#editCardModalWrapper")){
+        modalWrapper.classList.remove("displayModal");
+        modalWrapper.classList.add("hideModal");
+    }
+});
+
 
 // document.querySelector("#gizmos").addEventListener('click', event=>{
 //     if (event.target.innerText === "Edit") {
@@ -107,6 +138,8 @@ function handleRemoveButtonClick (event) {
 removeButtons.forEach(removeButton => {
     removeButton.addEventListener('click', handleRemoveButtonClick);
 });
+
+gizmoList.forEach(gizmo => gizmosDiv.appendChild(generateCard(gizmo)));
 
 
 

@@ -120,6 +120,48 @@ header button {
     padding: 7px 0;
 }
 
+#editCardModalWrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px 0 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(0px);
+    transition: all ease .5s;
+    opacity: 1;
+    z-index: 2;
+}
+
+#editCardForm {
+    position: relative;
+    background-color: #464040;
+    opacity: 0.9;
+    padding: 20px;
+    border-radius: var(--border-rd);
+    transform: translateY(300px);
+    transition: all ease .5s;
+}
+
+#editCardModalWrapper.hideModal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#editCardModalWrapper.displayModal {
+    opacity: 1;
+    pointer-events: all;
+    backdrop-filter: blur(5px);
+}
+
+#editCardModalWrapper.displayModal #editCardForm {
+    transform: translateY(0);
+}
+
 @media  screen and (max-width: 768px) {
     #gizmos {
         width: 90%;
