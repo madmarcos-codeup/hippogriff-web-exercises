@@ -162,6 +162,20 @@ header button {
     transform: translateY(0);
 }
 
+#close {
+    position: absolute;
+    top: -7px;
+    right: 2px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#close:hover {
+    color: white;
+    transform: scale(1.7);
+}
+
 @media  screen and (max-width: 768px) {
     #gizmos {
         width: 90%;
