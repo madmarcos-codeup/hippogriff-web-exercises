@@ -95,6 +95,23 @@ function generateCard(gizmoObject){
     return newCard;
 }
 
+// Alternative method for generating a card
+// you can concatenate the html and return the html string
+// In this case, to add event handlers to the
+// buttons, you would *have* to use the bubbling strategy
+// Examples of the bubbling strategy are shown below
+function generateCardStringConcat(gizmoObject){
+    return `
+<div class="gizmo" data-id="${gizmoObject.id}">
+    <h2>${gizmoObject.title}</h2>
+    <img src="${gizmoObject.imgSrc}" alt="${gizmoObject.imgAlt}">
+    <p>${gizmoObject.description}</p>
+    <button class="edit">Edit</button>
+    <button class="delete">Delete</button>
+</div>
+`;
+}
+
 // Selectors =========================
 
 const addCardButton = document.querySelector("header button");
@@ -274,18 +291,24 @@ editCardSubmitButton.addEventListener('click', event => {
 });
 
 /*
+* Bubble strategy
 * One strategy for adding event listeners
 * To dynamically created elements:
 * You can add the listener to the element's parent
 * Then use a conditional to listen for clicks on the descendants
+* This is called bubbling because
+* the event "bubbles up" to its parent
 *
-* The other strategy, which we are using here,
-* is to add the handler when the element is created
 * */
 // document.querySelector("#gizmos").addEventListener('click', event=>{
 //     if (event.target.innerText === "Edit") {
 //         handleEditButtonClick(event);
 //     }
+// });
+// document.querySelector("#gizmos").addEventListener('click', event =>{
+//    if (event.target.classList.includes('delete')){
+//        handleRemoveButtonClick(event);
+//    }
 // });
 
 

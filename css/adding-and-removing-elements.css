@@ -168,7 +168,7 @@ header button {
     right: 2px;
     font-size: 2rem;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 #close:hover {
