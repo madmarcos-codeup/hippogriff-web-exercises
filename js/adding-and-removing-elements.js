@@ -95,23 +95,6 @@ function generateCard(gizmoObject){
     return newCard;
 }
 
-// Alternative method for generating a card
-// you can concatenate the html and return the html string
-// In this case, to add event handlers to the
-// buttons, you would *have* to use the bubbling strategy
-// Examples of the bubbling strategy are shown below
-function generateCardStringConcat(gizmoObject){
-    return `
-<div class="gizmo" data-id="${gizmoObject.id}">
-    <h2>${gizmoObject.title}</h2>
-    <img src="${gizmoObject.imgSrc}" alt="${gizmoObject.imgAlt}">
-    <p>${gizmoObject.description}</p>
-    <button class="edit">Edit</button>
-    <button class="delete">Delete</button>
-</div>
-`;
-}
-
 // Selectors =========================
 
 const addCardButton = document.querySelector("header button");
@@ -290,26 +273,6 @@ editCardSubmitButton.addEventListener('click', event => {
     document.querySelector("#editCardModalWrapper").click();
 });
 
-/*
-* Bubble strategy
-* One strategy for adding event listeners
-* To dynamically created elements:
-* You can add the listener to the element's parent
-* Then use a conditional to listen for clicks on the descendants
-* This is called bubbling because
-* the event "bubbles up" to its parent
-*
-* */
-// document.querySelector("#gizmos").addEventListener('click', event=>{
-//     if (event.target.innerText === "Edit") {
-//         handleEditButtonClick(event);
-//     }
-// });
-// document.querySelector("#gizmos").addEventListener('click', event =>{
-//    if (event.target.classList.includes('delete')){
-//        handleRemoveButtonClick(event);
-//    }
-// });
 
 
 /*
@@ -342,5 +305,73 @@ removeButtons.forEach(removeButton => {
 * */
 gizmoList.forEach(gizmo => gizmosDiv.appendChild(generateCard(gizmo)));
 
+//====== ALTERNATIVE TECHNIQUES =======================
 
+// Alternative method for generating a card
+// you can concatenate the html and return the html string
+// In this case, to add event handlers to the
+// buttons, you would *have* to use the bubbling strategy
+// Examples of the bubbling strategy are shown below
+function generateCardStringConcat(gizmoObject){
+    return `
+<div class="gizmo" data-id="${gizmoObject.id}">
+    <h2>${gizmoObject.title}</h2>
+    <img src="${gizmoObject.imgSrc}" alt="${gizmoObject.imgAlt}">
+    <p>${gizmoObject.description}</p>
+    <button class="edit">Edit</button>
+    <button class="delete">Delete</button>
+</div>
+`;
+}
 
+/*
+* Following this string concatenation strategy,
+* you would then use a function that accepts
+* an array of objects.
+* You would start with an empty string.
+* You would then loop over the array of objects.
+* For each object, you would use the generateCard
+* function to generate the html for that object,
+* and concatenate it to the starting string.
+* The function returns the html.
+*
+* */
+
+function generateAllCards(objectArray){
+    let html = '';
+    objectArray.forEach( object => {
+        html += generateCardStringConcat(object);
+    });
+    return html;
+}
+
+/*
+* Bubble strategy
+* This is a strategy for adding event listeners
+* To dynamically created elements:
+* You can add the listener to the element's parent,
+* Then use a conditional to listen for clicks on the descendants
+* This is called bubbling because
+* the event "bubbles up" to its parent
+*
+* Here are two different approaches to the conditional:
+* Check the content (innerText) of the event target,
+* or check if the event target has a class, like 'delete'
+* */
+// document.querySelector("#gizmos").addEventListener('click', event=>{
+//     if (event.target.innerText === "Edit") {
+//         handleEditButtonClick(event);
+//     }
+// });
+// document.querySelector("#gizmos").addEventListener('click', event =>{
+//    if (event.target.classList.contains('delete')){
+//        handleRemoveButtonClick(event);
+//    }
+// });
+
+/*
+* You would then call the generateAllCards function to output
+* content to the page
+* */
+
+// gizmosDiv.innerHTML = generateAllCards(gizmoList);
