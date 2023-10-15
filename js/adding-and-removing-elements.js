@@ -1,6 +1,6 @@
 /*
     this array of objects is the basis for our
-    website content. Each array will be a card.
+    website content. Each object will be a card.
 */
 
 const gizmoList = [
@@ -352,7 +352,7 @@ function generateAllCards(objectArray){
 * You can add the listener to the element's parent,
 * Then use a conditional to listen for clicks on the descendants
 * This is called bubbling because
-* the event "bubbles up" to its parent
+* the event "bubbles up" to the event target's parent
 *
 * Here are two different approaches to the conditional:
 * Check the content (innerText) of the event target,
