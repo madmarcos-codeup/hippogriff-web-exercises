@@ -135,9 +135,10 @@ addCardSubmitButton.addEventListener('click', event => {
     * Create an object using the form input values
     * */
     const newCardObject = {
-        // using a global variable inside a function is questionable
+
         // This sets the id of the new gizmos object
         // to equal the current number of gizmos plus one
+        // Note: we are here referencing gizmosDiv, from the global scope
         id: gizmosDiv.children.length + 1,
         title: document.querySelector("#title").value,
         imgSrc: document.querySelector("#image").value,
@@ -202,6 +203,8 @@ function handleEditButtonClick(event){
     const image = cardToEdit.querySelector("img").getAttribute("src");
     const description = cardToEdit.querySelector("p").innerText;
 
+    console.log(editCardForm);
+
     editCardForm[1].value = title;
     editCardForm[2].value = image;
     editCardForm[3].value = description;
@@ -254,7 +257,7 @@ document.querySelector("#close").addEventListener('click', event => {
 
 editCardSubmitButton.addEventListener('click', event => {
     event.preventDefault();
-    // Get the values input into the form
+    // Get the values that the user input into the form
     const cardId = document.querySelector("#editCardId").value;
     const newTitle = document.querySelector("#editCardTitle").value;
     const newImageLink = document.querySelector("#editImageLink").value;
@@ -303,7 +306,7 @@ removeButtons.forEach(removeButton => {
 /*
 * Generate content from the gizmoList array when the page is loaded
 * */
-gizmoList.forEach(gizmo => gizmosDiv.appendChild(generateCard(gizmo)));
+// gizmoList.forEach(gizmo => gizmosDiv.appendChild(generateCard(gizmo)));
 
 //====== ALTERNATIVE TECHNIQUES =======================
 
@@ -375,3 +378,36 @@ function generateAllCards(objectArray){
 * */
 
 // gizmosDiv.innerHTML = generateAllCards(gizmoList);
+
+// ============ HYBRID TECHNIQUE =======================
+
+/*
+* Best practice: the middle ground
+* use document.create to create the card div
+* Then use .innerHTML to create the content of the div
+* Use .addEventListener
+* */
+
+function generateCardHybrid(gizmoObject){
+    // Create a div, give it class="gizmo" and a data-id
+    const newCard = document.createElement("div");
+    newCard.classList.add('gizmo');
+    // This produces the data-id attribute
+    // It will be used in the edit-card feature
+    newCard.dataset.id = gizmoObject.id;
+
+    newCard.innerHTML = `
+        <h2>${gizmoObject.title}</h2>
+        <img src="${gizmoObject.imgSrc}" alt="${gizmoObject.imgAlt}">
+        <p>${gizmoObject.description}</p>
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+    `;
+
+    newCard.querySelector(".edit").addEventListener('click', handleEditButtonClick);
+    newCard.querySelector(".delete").addEventListener('click', handleRemoveButtonClick);
+
+    return newCard;
+}
+
+gizmoList.forEach(gizmo => gizmosDiv.appendChild(generateCardHybrid(gizmo)));
