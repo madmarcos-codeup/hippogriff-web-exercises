@@ -87,3 +87,13 @@ cars.filter(car => car.mileage < 10000)
 })
 
 console.log(cars);
+
+// define reduce
+
+// explain when to use it
+
+// find the sum of prices
+
+// find the max price
+
+// find the car with the lowest mileage
