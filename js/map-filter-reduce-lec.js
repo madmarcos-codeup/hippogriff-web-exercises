@@ -102,6 +102,7 @@ function calcPriceSum(sumSoFar, currentPrice) {
 }
 
 const totalPrice = prices.reduce(calcPriceSum, 0);
+
 console.log(totalPrice);
 console.log("avg price " + totalPrice /  prices.length);
 

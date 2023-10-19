@@ -25,26 +25,44 @@
     // mention fetch's default response type is GET
 
     // show basic fetch
+    const pokePromise = fetch("https://pokeapi.co/api/v2/pokemon/charmander");
 
     // what does fetch return??? a pokemon character?
 
     // save it to a variable and log it
-
+    console.log(pokePromise);
 
     // explain asynchronous and Promises
 
     // use the .then() method of the promise
     // and log the response
+    pokePromise.then(function(response) {
+        console.log(response);
+    });
 
     // explain the callback function above!
 
 
     // now show asynchronous behavior at work
-
+    console.log("1");
+    fetch("https://pokeapi.co/api/v2/pokemon/charmander")
+        .then(function(response) {
+            console.log("2");
+        });
+    console.log("3");
 
     // explain ok and status (response status codes)
     // show http response codes
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+    // fetch("https://pokeapi.co/api/v2/pokemon/charmanderXXXXXX")
+    //     .then(function(response) {
+    //         if(response.ok) {
+    //             console.log("ok");
+    //         } else {
+    //             console.log("not ok");
+    //             console.log(response.status);
+    //         }
+    //     });
 
     // point out the unusable body
 
@@ -55,23 +73,50 @@
 
     // now let's use the JSON body that is returned in the response
     // the handy json() function
-
+    fetch("https://pokeapi.co/api/v2/pokemon/charmander")
+        .then(function(response) {
+            response.json()
+                .then(function(data) {
+                    console.log(data);
+                })
+        });
 
     // WHAT?!? another promise!?!
     // ok, can we just use .json().then()?
     // sure. that's called callback hell, or the pyramid of doom
-
+    fetch("https://pokeapi.co/api/v2/pokemon/charmander")
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(data) {
+            console.log(data);
+        });
 
     // instead of callback hell, we can RETURN THE .json() PROMISE and keep its .then() inline with the other .then()
     // this improves its readability
 
 
     // here is where I will admit arrow functions and named functions clean it up nicely
-
+    fetch("https://pokeapi.co/api/v2/pokemon/charmander")
+        .then(response => response.json())
+        .then(pokeData => console.log(pokeData));
 
 
 
     // catch and finally
+    // start the spinner
+    console.log("start spinner");
+    fetch("https://pokeapi.co/api/v2/pokemon/charmander")
+        .then(response => response.json())
+        .then(pokeData => console.log("got some data"))
+        .catch(error => {
+            console.log(error);
+        }).finally(function() {
+            // do something when the request is over
+            // successful or not
+            // like stop the spinner
+            console.log("stop spinner");
+        });
 
 
 
@@ -89,7 +134,15 @@
     // show POST options in textbook. point at Content-Type and body for POST/PUT/PATCH
 
     // make options for a GET request
-
+    const options = {
+        method: "GET",
+        headers: {
+            "Authorization": "who cares"
+        }
+    }
+    fetch('https://animechan.xyz/api/random', options)
+        .then(response => response.json())
+        .then(quote => console.log(quote))
 
     // show github public apis
     // https://github.com/public-apis/public-apis
@@ -100,6 +153,27 @@
 
     // lastly, show how you can use fetch to read a data file
     // and display its contents in an HTML element
+
+    fetch("data/books.json")
+        .then(response => {
+            if(!response.ok) {
+                console.log("Error " + response.status)
+            }
+            return response.json();
+        })
+        .then(data => {
+            printBooks(data);
+        });
+
+    function printBooks(books) {
+        const booksPar = document.querySelector("#my-books");
+        // iterate over books array
+        for (let i = 0; i < books.length; i++) {
+            // and add each one to the html books element
+            booksPar.innerText += books[i].title + "\n";
+        }
+
+    }
 
     // read the book data and point out HOW FAST reading data locally is compared to over internet
 
