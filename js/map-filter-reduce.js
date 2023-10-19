@@ -88,6 +88,8 @@ cars.filter(car => car.mileage < 10000)
 
 console.log(cars);
 
+// ******************** REDUCE
+
 // define reduce
 
 // explain when to use it
