@@ -126,3 +126,27 @@ function findLowestMileage(lowestSoFar, currentCar) {
 }
 const lowestMileageCar = cars.reduce(findLowestMileage, cars[0]);
 console.log(lowestMileageCar);
+
+// find the cars with model that starts with C
+console.log("FILTER EXAMPLE");
+let filteredCars = cars.filter(function(car) {
+    // console.log(car);
+    if(car.model.charAt(0).toUpperCase() === "C") {
+        // the car's model DOES start with C
+        return true;
+    }
+    // the car's model does not start with C
+    return false;
+});
+console.log(filteredCars);
+
+filteredCars = cars.filter((car) => {
+    // console.log(car);
+    if(car.model.charAt(0).toUpperCase() === "C") {
+        // the car's model DOES start with C
+        return true;
+    }
+    // the car's model does not start with C
+    return false;
+});
+console.log(filteredCars);
