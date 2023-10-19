@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Dune",
+    "author": {
+      "firstname": "Frank",
+      "lastname": "Herbert"
+    }
+  },
+  {
+    "title": "The Hobbit",
+    "author": {
+      "firstname": "J.R.R.",
+      "lastname": "Tolkien"
+    }
+  }
+]

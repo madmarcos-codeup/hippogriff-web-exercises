@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTTP Requests</title>
+</head>
+<body>
+<h4>Books</h4>
+<p id="my-books"></p>
+
+<script>
+    "use strict";
+
+    // explain how the web works: requests and responses
+    // mention how long it takes to get a response (LATENCY)
+    // examples https://speed.cloudflare.com/
+    // and https://testmy.net/latency?testALL=1
+    // https://developer.mozilla.org/en-US/docs/Web/Performance/Understanding_latency
+    // compare that to general acceptable page load time: 100ms
+
+    // explain common types of requests (also called HTTP Methods)
+    // GET POST PUT PATCH DELETE
+
+    // introduce the fetch api
+    // mention fetch's default response type is GET
+
+    // show basic fetch
+
+    // what does fetch return??? a pokemon character?
+
+    // save it to a variable and log it
+
+
+    // explain asynchronous and Promises
+
+    // use the .then() method of the promise
+    // and log the response
+
+    // explain the callback function above!
+
+
+    // now show asynchronous behavior at work
+
+
+    // explain ok and status (response status codes)
+    // show http response codes
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+    // point out the unusable body
+
+    // use ok and status
+
+    // don't have to use an intermediary variable
+
+
+    // now let's use the JSON body that is returned in the response
+    // the handy json() function
+
+
+    // WHAT?!? another promise!?!
+    // ok, can we just use .json().then()?
+    // sure. that's called callback hell, or the pyramid of doom
+
+
+    // instead of callback hell, we can RETURN THE .json() PROMISE and keep its .then() inline with the other .then()
+    // this improves its readability
+
+
+    // here is where I will admit arrow functions and named functions clean it up nicely
+
+
+
+
+    // catch and finally
+
+
+
+
+
+    // point at start and stop of loading animation
+    // why is finally a good place to stop the loading animation?
+
+    // change url to www.google.com
+    // explain CORS error BRIEFLY! only need to be aware of it for now
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+    // TLDR: For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy. This means that a web application using those APIs can only request resources from the same origin the application was loaded from unless the response from other origins includes the right CORS headers.
+
+
+    // show POST options in textbook. point at Content-Type and body for POST/PUT/PATCH
+
+    // make options for a GET request
+
+
+    // show github public apis
+    // https://github.com/public-apis/public-apis
+
+    // try this with anime chan
+    // I ran into CORS issues once with anime chan. but seems ok now
+
+
+    // lastly, show how you can use fetch to read a data file
+    // and display its contents in an HTML element
+
+    // read the book data and point out HOW FAST reading data locally is compared to over internet
+
+
+</script>
+</body>
+</html>
