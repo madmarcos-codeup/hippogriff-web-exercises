@@ -11,17 +11,17 @@ const ghOptions = {
 //     .then(response => response.json())
 //     .then(data => console.log(data));
 
-// function getGHUserLastCommitDate(userName) {
-//     return fetch(`https://api.github.com/users/${userName}/events/public`, ghOptions)
-//         .then(response => response.json())
+function getGHUserLastCommitDate(userName) {
+    return fetch(`https://api.github.com/users/${userName}/events/public`, ghOptions)
+        .then(response => response.json())
+
+}
 //
-// }
-//
-// getGHUserLastCommitDate("madmarcos-codeup")
-//     .then(data => {
-//             findAndPrintLastCommit(data);
-//     });
-// console.log(getGHUserLastCommitDate("mojombo"));
+getGHUserLastCommitDate("madmarcos-codeup")
+    .then(data => {
+            findAndPrintLastCommit(data);
+    });
+console.log(getGHUserLastCommitDate("mojombo"));
 
 async function getUsersLastCommitDate(userName) {
     console.log("1");

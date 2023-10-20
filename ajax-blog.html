@@ -13,7 +13,28 @@
 
 <script>
     "use strict";
+    // grab a reference to the posts div
+    const postsDiv = document.querySelector("#posts");
+
     // TODO: Create an AJAX GET request for the file under data/blog.json
+    fetch("/data/blog.json")
+        .then(response => response.json())
+        .then(data => {
+            // if I get here, I have the blog data
+            for (let i = 0; i < data.length; i++) {
+                // 1. create a div element for the new post
+                const div = document.createElement("div");
+                // add any classes we might want for the entire post
+                div.style.border = "1px solid orange";
+                // 2. set the post div data in the post div
+                div.innerHTML = `
+<h4>${data[i].title}</h4>
+<p>${data[i].content}</p>`;
+
+                // 3. append the post div to the posts
+                postsDiv.appendChild(div);
+            }
+        });
 
     // TODO: Take the data from blog.json and append it to the posts div
 

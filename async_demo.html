@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Async Demo</title>
+</head>
+<body>
+
+<p id="output"></p>
+
+<script>
+  "use strict";
+
+  document.querySelector("#output").innerText += "1\n";
+  foo();
+  document.querySelector("#output").innerText += "3\n";
+
+  async function foo() {
+      let x = 1;
+      for (let i = 0; i < 100; i++) {
+          console.log(i);
+      }
+
+      document.querySelector("#output").innerText += "2\n";
+  }
+</script>
+</body>
+</html>

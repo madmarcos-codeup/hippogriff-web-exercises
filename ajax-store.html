@@ -3,6 +3,22 @@
 <html>
 <head>
     <title>Online Store</title>
+
+    <style>
+        tbody tr:nth-child(even) {
+            background-color: blue;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: red;
+        }
+        /*.odd {*/
+        /*    background-color: red;*/
+        /*}*/
+
+        /*.even {*/
+        /*    background-color: blue;*/
+        /*}*/
+    </style>
 </head>
 <body>
 
@@ -38,22 +54,36 @@
     function createInventoryRows(inventory) {
         // 1. iterate thru the inventory array
         for (let i = 0; i < inventory.length; i++) {
+
+            // odd rows will be red (have the odd class)
+            // even rows will be blue (have the even class)
+
             // 2. add that item to the table
-            createInventoryItemRow(inventory[i]);
+            createInventoryItemRow(inventory[i], i);
         }
 
         // console.log(inventory);
     }
 
-    function createInventoryItemRow(item) {
+    function createInventoryItemRow(item, index) {
         // 1. get ref to the table
         const tBody = document.querySelector("#insertProducts");
 
         // 2. create a row element
         const row = document.createElement("tr");
 
+        // if(index % 2 === 0) {
+        //     row.classList.add("even");
+        // } else {
+        //     row.classList.add("odd");
+        // }
+
         // 3. add the table data to the row
-        row.innerHTML = `<td>${item.title}</td>`;
+        row.innerHTML = `<td>${item.title}</td>
+<td>${item.quantity}</td>
+<td>${item.price}</td>
+<td>${item.categories}</td>
+`;
 
         // 4. append the row to the table
         tBody.appendChild(row);
