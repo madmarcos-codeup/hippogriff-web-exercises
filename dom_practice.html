@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Practice</title>
+</head>
+<body>
+
+    <h1 class="class1 class2">Hello World</h1>
+
+    <a>Click me</a>
+    <br>
+    <a id="anchor-2" data-id="555"> or click this</a>
+
+<script>
+    "use strict";
+
+    const body = document.querySelector("body");
+    console.log(body);
+
+    let myH1 = document.querySelector("body h1");
+    console.log(myH1);
+
+    myH1 = body.children[0];
+    console.log(myH1);
+
+    let myA = document.querySelector("#anchor-2");
+    console.log(myA);
+    console.log(myA.getAttribute("data-id"));
+
+    myH1.setAttribute("data-anything", "blahdsfgdf");
+
+    console.log(myH1.getAttribute("class"));
+    myH1.classList.toggle("class2");
+    myH1.classList.toggle("class2");
+
+    myH1.addEventListener("mouseover", function(event) {
+        myH1.style.backgroundColor = "tan";
+    });
+    myH1.addEventListener("mouseleave", function(event) {
+        myH1.style.backgroundColor = "white";
+    });
+
+</script>
+</body>
+</html>
