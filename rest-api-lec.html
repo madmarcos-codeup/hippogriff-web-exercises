@@ -6,8 +6,14 @@
 </head>
 <body>
 
-<script>
+<div id="books">
 
+</div>
+
+<script type="module">
+    import {getBooks, getBook, createBook, updateBook, deleteBook} from "./js/book-functions.js";
+
+    async function main() {
         // explain REST and RESTful
 
         // refresh what is an API
@@ -22,10 +28,16 @@
         // make getBooks function
         // test it
         // callback hell! ick
-
+        // fetch("http://localhost:3000/books")
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     });
         // make it async
         // move to using a try catch
-
+        // let books = await fetch("http://localhost:3000/books")
+        //     .then(response => response.json());
+        // console.log(books);
 
         // put the main into a function and make it async???
 
@@ -33,10 +45,11 @@
         // add an BOOKS_HOST constant and explain it
         // now we have a cool home to put all the book and author functions
         // and the main stays nice and simple
-
+        books = await getBooks();
+        console.log(books);
 
         // now let's add authors to the objects
-            // point out authorId
+        // point out authorId
 
 
         // make a getAuthor() function and have getBook() call it
@@ -47,24 +60,41 @@
 
         // make a getBook(id) function
         // test it
-
+        // let book = await getBook(1);
+        // console.log(book);
 
         // make createBook(book)
         // need options for method, headers, and body
         // test it
+        // let newBook = await createBook({
+        //     title: "A Fake Book",
+        //     authorId: 1,
+        //     publishedYear: 2023,
+        //     genre: "Fun stuff",
+        //     summary: "One man alone against the world finds solace in the warm embrace of a pinball machine.",
+        //     ISBN: "1111111111111"
+        // });
+        // console.log(newBook);
 
-
-
+        let book = await getBook(5);
+        // console.log(book);
 
         // make updateBook(book)
         // need options for method, headers, and body
         // test it
-
-
+        // book.title = "A Fake Book Part Deux";
+        // book = await updateBook(book);
+        //
+        // const changedBook = await getBook(5);
+        // console.log(book);
 
         // make deleteBook(id)
+        const deletedBook = await deleteBook(5);
+        // console.log(deletedBook);
 
-        
+    }
+
+    main();
 
 </script>
 </body>
