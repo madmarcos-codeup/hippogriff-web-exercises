@@ -1,5 +1,5 @@
-const OPENWEATHER_ENDPOINT = 'http://api.openweathermap.org/data/2.5/onecall';
-const OPENWEATHER_ICON_ENDPOINT = 'http://openweathermap.org/img/w/';
+const OPENWEATHER_ENDPOINT = 'https://api.openweathermap.org/data/2.5/onecall';
+const OPENWEATHER_ICON_ENDPOINT = 'https://openweathermap.org/img/w/';
 
 function getMarkerLngLat(marker) {
     const lngLat = marker.getLngLat();
