@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Map</title>
+  
+  <link rel="stylesheet" href="css/tron-spinner.css">
+  
+  <!-- Bootstrap Core CSS -->
+  <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  
+  <!--    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">-->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+  
+  
+  <style>
+    .search-div {
+      padding-left: 0px;
+      margin-left: -10px !important;
+    }
+    
+    .fly-to-div {
+      padding-left: 0px;
+    }
+    
+    .search-button-div {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+    }
+    /*#addressSearch {*/
+    /*    float: left;*/
+    /*}*/
+    
+    #search-button {
+      margin: 0;
+    }
+    
+    .my-hidden {
+      display: none;
+    }
+    
+    #my-spinner {
+      float: right;
+      position: absolute;
+      top: 40%;
+      left: 48%;
+      margin: 0 auto;
+      z-index: 1000 !important;
+    }
+    
+    #my-map {
+      /* the width and height may be set to any size */
+      width: 100%;
+      height: 500px;
+    }
+    
+    .form-group {
+      margin: 10px;
+    }
+    .mapboxgl-popup-content {
+      /*width: 200px;*/
+      /*padding: 30px 30px 45px*/
+    }
+    
+    .my-popup-container {
+      width: 100%;
+      /*padding: 0;*/
+      /*margin: 0;*/
+    }
+    
+    .my-popup-row-headers {
+      padding: 0px 5px;
+      display:flex;
+      flex-direction: column;
+      /*justify-content: space-evenly;*/
+      align-items: start;
+    }
+    .my-popup-row-headers>p {
+      margin: 0px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .my-popup-col {
+      /*border-right: 1px solid grey;*/
+      margin: 0px 0px;
+      padding: 0px 5px;
+      display:flex;
+      flex-direction: column;
+      /*justify-content: space-evenly;*/
+      align-items: center;
+      
+    }
+    
+    .my-popup-col>p {
+      margin: 0px;
+      text-align: center;
+    }
+    
+    .my-popup-col>img {
+      max-width: 40px;
+      position: relative;
+      top: -7px;
+      margin: 0px -15px;
+    }
+  </style>
+  
+</head>
+<body>
+<div id="my-spinner" class="tron-loading my-hidden"></div>
+
+<div class="container-fluid">
+  <div class="row form-group search-div">
+    <div class="col-6">
+      <label for="addressSearch">Address Search</label>
+      <input type="text" class="form-control" id="addressSearch" placeholder="Enter an address to search for">
+    </div>
+    <div class="col-2 search-button-div">
+      <button id="search-button" class="btn btn-primary">Search</button>
+    </div>
+  </div>
+  <div class="row form-group fly-to-div">
+    <div class="col-6">
+      <input class="form-check-input" type="checkbox" value="" id="flyto">
+      <label class="form-check-label" for="flyto">
+        Fly to and zoom?
+      </label>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div id='my-map' class="col-12"></div>
+  </div>
+  
+</div>
+
+
+<!--<script src="js/jquery-2.2.4.js"></script>-->
+
+<!-- Bootstrap Core JavaScript -->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!--<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>-->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+
+<script src="https://unpkg.com/dayjs@1.10.7/dayjs.min.js"></script>
+<script src="https://unpkg.com/dayjs@1.10.7/plugin/utc.js"></script>
+<script src="https://unpkg.com/dayjs@1.10.7/plugin/timezone.js"></script>
+<script>dayjs.extend(window.dayjs_plugin_utc)</script>
+<script>dayjs.extend(window.dayjs_plugin_timezone)</script>
+
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/weathermap.js"></script>
+
+<script>
+  const OPTIMAL_MAP_ZOOM = 15;
+  const STARTING_COORDS = [-98.4861, 29.4260];
+
+    let map;
+  let popup;
+  let marker;
+
+  
+  
+    (function() {
+    
+        mapboxgl.accessToken = MAPBOX_API_KEY;
+      map = new mapboxgl.Map({
+        container: 'my-map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        zoom: OPTIMAL_MAP_ZOOM
+      });
+
+        marker = new mapboxgl.Marker({
+          draggable: true
+        });
+      marker.on('dragend', onDragEnd);
+      marker.on('dragstart', onDragStart);
+
+        map.on('moveend', onMoveEnd);
+
+      // $("#addressSearch").on("keyup", function(event) {
+      document.querySelector("#addressSearch").addEventListener("keyup", function(event) {
+        if(event.key === "Enter") {
+          searchForAddress();
+        }
+      });
+      document.querySelector("#search-button").addEventListener("click", searchForAddress)
+      // $("#search-button").on("click", searchForAddress);
+    
+    
+      // $(document).ready(function() {
+      document.addEventListener("DOMContentLoaded", function() {
+        startSpinner();
+
+            updateMarker(STARTING_COORDS);
+
+      });
+
+        function onDragStart() {
+          popup.remove();
+        }
+
+        function onDragEnd() {
+          startSpinner();
+
+            const lngLat = getMarkerLngLat(marker);
+
+          // lngLat is an object here
+          updateMarker(lngLat);
+        }
+
+    })();
+
+</script>
+</body>
+</html>
