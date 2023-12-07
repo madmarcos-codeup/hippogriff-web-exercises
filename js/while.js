@@ -6,7 +6,7 @@ while(num < 65536){
     console.log(num);
 }
 //num*=2
-
+// test
 
 //create a variable to hold a random int between 50 and 100. this is the number of cones she has to sell
 let totalCones = getRandomInt(50,100);
