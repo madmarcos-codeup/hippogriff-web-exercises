@@ -1,14 +1,12 @@
 const BOOKS_HOST = "http://localhost:3000";
-export function getBooks() {
+export async function getBooks() {
     try {
-        return fetch(`${BOOKS_HOST}/books`)
-            .then(response => response.json())
-            .then(async books => {
-                for (let i = 0; i < books.length; i++) {
-                    books[i].author = await getAuthor(books[i].authorId);
-                }
-                return books;
-            });
+        const books = await fetch(`${BOOKS_HOST}/books`)
+            .then(response => response.json());
+        for (let i = 0; i < books.length; i++) {
+            books[i].author = await getAuthor(books[i].authorId);
+        }
+        return books;
     } catch(error) {
         console.error(error);
     }
